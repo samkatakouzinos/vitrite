@@ -48,7 +48,9 @@ LRESULT CALLBACK KbHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
 		if ((!(HIWORD(lParam) & KF_UP)) &&		// Is this a key down situation?
 			(!(HIWORD(lParam) & KF_REPEAT)) &&	// Or a repeating key?
 			(!(HIWORD(lParam) & KF_EXTENDED))) {// Or one on the numpad?
-			if ((GetKeyState(VK_SHIFT) < 0) && (GetKeyState(VK_CONTROL) < 0)) {
+			if ((GetKeyState(VK_SHIFT) < 0) && 
+				(GetKeyState(VK_CONTROL) < 0) && 
+				(GetKeyState(VK_MENU) < 0)) {
 				if ((wParam>=0x030) && (wParam<=0x039))	{// Is this a number key?
 					iTenths = wParam - 0x030;
 				} else if (wParam == VK_OEM_PLUS) {	// Is this the plus key?
